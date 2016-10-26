@@ -1,0 +1,5 @@
+{
+  "name": "book_summary",
+  "widget": ["RefDiv",{"$":".rewgt.book_summary","key":"summary","width":220,"json":""}],
+  "scene": ["RefDiv",{"$":".rewgt.book_summary","key":"summary","width":220,"height":250,"json":""}]
+}
