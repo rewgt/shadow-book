@@ -336,7 +336,7 @@ function mdPanelId__(value,oldValue) {
             utils.ajax( { type:'GET', url:sUrl, timeout:30000, dataType:'text',
               success: function(data,statusText,xhr) {
                 if (markdownPanel)
-                  markdownPanel.duals.mark = escape(data || '');
+                  markdownPanel.duals['html.'] = data;
                 
                 var sNewHash = '#' + encodeURIComponent(currId);
                 if (sAnchor) {
@@ -441,7 +441,7 @@ main.$$onLoad.push( function(callback) {
     ]);
     var contentEle = utils.loadElement([ ['Panel',{key:'book_content',summaryPath:'',$id__:mdPanelId__}],
       ['Panel',{key:'prev','data-id':'', width:36, height:0.9999, $onClick:goPrevNext}],
-      ['MarkedDiv',{key:'mark',mark:'', width:-1, height:0.9999, style:{overflow:'auto'}}],
+      ['MarkedDiv',{key:'mark', width:-1, height:0.9999, style:{overflow:'auto'}}],
       ['Panel',{key:'next','data-id':'', width:36, height:0.9999, $onClick:goPrevNext}],
     ]);
     var gotoTopEle = utils.loadElement([ ['Div',{key:'book_top',width:0,height:0,'data-width':'32','data-height':'32','data-right':'4','data-bottom':'4','data-src':'','data-title':''}],

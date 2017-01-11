@@ -1,5 +1,5 @@
 {
   "name": "book_content",
   "widget": ["RefDiv",{"$":".rewgt.book_content","key":"content","height":250,"summary-path":""}],
-  "widget": ["RefDiv",{"$":".rewgt.book_content","key":"content","width":300,"height":250,"summary-path":""}]
+  "scene": ["RefDiv",{"$":".rewgt.book_content","key":"content","width":300,"height":250,"summary-path":""}]
 }
