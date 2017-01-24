@@ -109,7 +109,7 @@ function sumPanelId__(value,oldValue) {
   if (value <= 2) {
     if (value == 1) {   // init process
       this.defineDual('json', function(value,oldValue) {
-        this.state.json = value;
+        // this.state.json = value; // must be auto assigned
         if (value) loadSummary(this,value);
       });
     }
@@ -188,14 +188,14 @@ function sumListId__(value,oldValue) {
       
       // listen 'jumpTo' to receive jump command
       this.defineDual('jumpTo', function(value,oldValue) {
-        this.state.jumpTo = value; // [prevId,nextId,currId,sUrl,sAnchor,sTitle] or undefined
+        // [prevId,nextId,currId,sUrl,sAnchor,sTitle] or undefined
+        // this.state.jumpTo = value; // must be auto assigned
       });
       
       // response to double click and onhashchange
       var firstGoto = true;
       this.defineDual('goTo', function(value,oldValue) {
-        this.state.goTo = value;
-        
+        // this.state.goTo = value;  // must be auto assigned
         var targ = null, node = this.getHtmlNode();
         if (!node) return;
         
@@ -395,7 +395,7 @@ function goTopId__(value,oldValue) {
   if (value <= 2) {
     if (value == 1) {
       this.defineDual('data-src', function(value,oldValue) {
-        this.state['data-src'] = value;
+        // this.state['data-src'] = value;  // must be auto assigned
         if (value) {
           var imgComp = this.componentOf('img');
           if (imgComp && imgComp.isHooked)
