@@ -433,29 +433,34 @@ function goTopId__(value,oldValue) {
 
 // define $$onLoad function
 //-------------------------------
+var bookElements_ = null;
+
 main.$$onLoad.push( function(callback) {
   utils.setVendorLib('rewgt', function(template) {
-    var summaryEle = utils.loadElement([
-      ['Panel',{key:'book_summary',width:240,klass:'auto-hidden-visible default-large-small',style:{backgroundColor:'#fafafa'},'json':'','dual-data':[],$id__:sumPanelId__}],
-      ['Ul',{key:'list',width:0.9999,padding:[0,0,12,4],klass:'default-square-circle default-large-small auto-hidden-visible book_summary',style:{color:'#444'},$data:'duals.data',$onClick:sumListClick,$id__:sumListId__}],
-    ]);
-    var contentEle = utils.loadElement([ ['Panel',{key:'book_content',summaryPath:'',$id__:mdPanelId__}],
-      ['Panel',{key:'prev','data-id':'', width:36, height:0.9999, $onClick:goPrevNext}],
-      ['MarkedDiv',{key:'mark', width:-1, height:0.9999, style:{overflow:'auto'}}],
-      ['Panel',{key:'next','data-id':'', width:36, height:0.9999, $onClick:goPrevNext}],
-    ]);
-    var gotoTopEle = utils.loadElement([ ['Div',{key:'book_top',width:0,height:0,'data-width':'32','data-height':'32','data-right':'4','data-bottom':'4','data-src':'','data-title':''}],
-      ['P',{ key:'p',margin:[0,0,0,0], $id__:goTopId__,
-        $title: 'duals["data-title"]',
-        $width: 'ex.parseInt(duals["data-width"])',
-        $height: 'ex.parseInt(duals["data-height"])',
-        '$data-right': 'duals["data-right"]',
-        '$data-bottom': 'duals["data-bottom"]',
-        '$data-src': 'duals["data-src"]',
-        style: {position:'absolute',zIndex:'999'}
-      }],
-    ]);
-    template.setChild(summaryEle,contentEle,gotoTopEle,callback);
+    if (!bookElements_) {
+      var summaryEle = utils.loadElement([
+        ['Panel',{key:'book_summary',width:240,klass:'auto-hidden-visible default-large-small',style:{backgroundColor:'#fafafa'},'json':'','dual-data':[],$id__:sumPanelId__}],
+        ['Ul',{key:'list',width:0.9999,padding:[0,0,12,4],klass:'default-square-circle default-large-small auto-hidden-visible book_summary',style:{color:'#444'},$data:'duals.data',$onClick:sumListClick,$id__:sumListId__}],
+      ]);
+      var contentEle = utils.loadElement([ ['Panel',{key:'book_content',summaryPath:'',$id__:mdPanelId__}],
+        ['Panel',{key:'prev','data-id':'', width:36, height:0.9999, $onClick:goPrevNext}],
+        ['MarkedDiv',{key:'mark', width:-1, height:0.9999, style:{overflow:'auto'}}],
+        ['Panel',{key:'next','data-id':'', width:36, height:0.9999, $onClick:goPrevNext}],
+      ]);
+      var gotoTopEle = utils.loadElement([ ['Div',{key:'book_top',width:0,height:0,'data-width':'32','data-height':'32','data-right':'4','data-bottom':'4','data-src':'','data-title':''}],
+        ['P',{ key:'p',margin:[0,0,0,0], $id__:goTopId__,
+          $title: 'duals["data-title"]',
+          $width: 'ex.parseInt(duals["data-width"])',
+          $height: 'ex.parseInt(duals["data-height"])',
+          '$data-right': 'duals["data-right"]',
+          '$data-bottom': 'duals["data-bottom"]',
+          '$data-src': 'duals["data-src"]',
+          style: {position:'absolute',zIndex:'999'}
+        }],
+      ]);
+      bookElements_ = [summaryEle,contentEle,gotoTopEle];
+    }
+    template.setChild(bookElements_[0],bookElements_[1],bookElements_[2],callback);
   });
   
   function goPrevNext(event) {

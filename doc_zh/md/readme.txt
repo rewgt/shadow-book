@@ -11,21 +11,21 @@ Shadow Book 是一个基于 <a target="_blank" href="https://en.wikipedia.org/wi
 
 先安装 Shadow Widget：
 
-```
-  md user
+``` bash
+  mkdir user
   cd user
   git clone https://github.com/rewgt/shadow-server.git
 ```
 
 然后安装 Shadow Book：
 
-```
+``` bash
   git clone https://github.com/rewgt/shadow-book.git
 ```
 
 #### 在本机启动 Web 服务
 
-```
+``` bash
   cd shadow-server
   npm start
 ```

@@ -5,7 +5,7 @@
 
 本节介绍索引项文件 `summary.json` 的格式。该 json 文件定义如下格式的数据：
 
-```
+``` js
   [ {title:"Shadow book", navPanelWidth:240, storageExpiredDays:250, ctrlPanelLib:""}, 
     page_index, ... 
   ]
@@ -27,7 +27,7 @@
 
 page_index 要求按如下格式定义：
 
-```
+``` js
   [iLevel, sId, sTitle, sPageUrl]
 ```
 

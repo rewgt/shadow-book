@@ -9,7 +9,7 @@ Shadow Book 是一个基于 <a target="_blank" href="https://en.wikipedia.org/wi
 先安装 Shadow Widget：
 
 ```
-  md user
+  mkdir user
   cd user
   git clone https://github.com/rewgt/shadow-server.git
 ```

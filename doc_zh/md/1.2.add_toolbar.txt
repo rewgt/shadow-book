@@ -7,7 +7,7 @@
 
 `summary.json` 定义了如下格式的配置：
 
-```
+``` js
   [ {title:"Shadow book", navPanelWidth:240, storageExpiredDays:250, ctrlPanelLib:""}, 
     page_index, ... 
   ]
@@ -19,7 +19,7 @@
 
 比如我们给 `ctrlPanelLib` 赋值 `"toolbar.js"`，在 `index.html` 文件所在目录下创建 `toolbar.js` 文件，把下面代码保存到这个 JS 文件。
 
-```
+``` js
 var main = W.$main, utils = W.$utils, ex = W.$ex;
 
 ( function() {
@@ -62,7 +62,7 @@ mainPanel.setChild('+content',ele, function() {
 
 上例中 `contentPanel.duals.jumpTo` 的格式为：
 
-```
+``` js
   [sPreviousId, sNextId, sCurrentId, sPageUrl, sAnchor, sTitle]
 ```
 
@@ -74,13 +74,13 @@ Shadow Book 用 URL 中的 hash 段字串指示打开文件的位置，比如：
 
 在 markdown 中用类似如下文本定义锚点：
 
-```
+``` html
   <a name="extend_type"></a>
 ```
 
 另外，手册的链接跳转大部分在手册跳转，跳到手册外的 URL 宜用 markdown 文本写成如下样子：
 
-```
+``` html
   <a target="_blank" href="https://github.com/rewgt/shadow-book">Shadow Book 项目</a>
 ```
 

@@ -11,7 +11,7 @@ Shadow Book 注册了 `".rewgt.book_summary", ".rewgt.book_content", ".rewgt.boo
 
 使用 `book_top` 构件，只须在 markdown 文本插入如下代码（通常在文本末尾插入）：
 
-```
+``` html
 <pre $=".rewgt.book_top"></pre>
 ```
 
@@ -33,7 +33,7 @@ duals 属性：
 
 #### 使用举例
 
-```
+``` html
 <pre $=".rewgt.book_top" data-width="48" data-height="48"></pre>
 ```
 
