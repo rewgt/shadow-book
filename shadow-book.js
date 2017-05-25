@@ -253,7 +253,7 @@ function sumListId__(value,oldValue) {
     }
     else dProp.margin = [6,0,6,10*indent];
     
-    var bItem = [['Li',dProp]], sIndex2 = (sIndex=='0' || sIndex.startsWith('0.'))? '': sIndex;
+    var bItem = [['Li',dProp]], sIndex2 = (sIndex=='0' || sIndex.indexOf('0.') == 0)? '': sIndex;
     bItem.push(['Span',{key:'0',klass:'summary_id','html.':sIndex2}]);
     bItem.push(['Span',{key:'1','html.':sTitle}]);
     bChild.push(utils.loadElement(bItem));
@@ -363,12 +363,12 @@ function mdPanelId__(value,oldValue) {
       
       this.defineDual('summaryPath', function(value,oldValue) {
         if (oldValue) {
-          var sPath = oldValue.endsWith('.list')? oldValue: oldValue + '.list';
+          var sPath = oldValue.slice(-5) === '.list'? oldValue: oldValue + '.list';
           var sour = this.componentOf(sPath);
           if (sour) sour.unlisten('*',this);
         }
         if (value) {
-          var sPath = value.endsWith('.list')? value: value + '.list';
+          var sPath = value.slice(-5) === '.list'? value: value + '.list';
           var sour = this.componentOf(sPath);
           if (sour) 
             sour.listen('jumpTo',this,'jumpTo');

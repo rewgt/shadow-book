@@ -27,6 +27,7 @@ Shadow Book 是一个基于 <a target="_blank" href="https://en.wikipedia.org/wi
 
 ``` bash
   cd shadow-server
+  npm install
   npm start
 ```
 
