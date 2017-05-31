@@ -1,5 +1,3 @@
-// shadow-book ver 0.1.0
-
 if (!window.W) { window.W = new Array(); W.$modules = [];} W.$modules.push( function(require,module,exports) {
 
 var React = require('react');
