@@ -107,7 +107,6 @@ function sumPanelId__(value,oldValue) {
   if (value <= 2) {
     if (value == 1) {   // init process
       this.defineDual('json', function(value,oldValue) {
-        // this.state.json = value; // must be auto assigned
         if (value) loadSummary(this,value);
       });
     }
@@ -185,33 +184,31 @@ function sumListId__(value,oldValue) {
       this.state.currIndex = '';
       
       // listen 'jumpTo' to receive jump command
-      this.defineDual('jumpTo', function(value,oldValue) {
-        // [prevId,nextId,currId,sUrl,sAnchor,sTitle] or undefined
-        // this.state.jumpTo = value; // must be auto assigned
-      });
+      this.defineDual('jumpTo'); // [prevId,nextId,currId,sUrl,sAnchor,sTitle] or undefined
       
       // response to double click and onhashchange
       var firstGoto = true;
       this.defineDual('goTo', function(value,oldValue) {
-        // this.state.goTo = value;  // must be auto assigned
-        var targ = null, node = this.getHtmlNode();
-        if (!node) return;
-        
         var sHash = value[0], sAnchor = '', iPos = sHash.indexOf('!');
         if (iPos >= 0) {
           sAnchor = sHash.slice(iPos+1).trim();
           sHash = sHash.slice(0,iPos);
         }
         
-        try {
-          if (!sHash)
-            targ = node.querySelector('li[data-idx]');
-          else targ = node.querySelector('li[data-idx="' + sHash + '"]');
-        } catch(e) { }
-        if (targ) {
-          gotoPage(this,node,targ,sAnchor);
-          if (firstGoto) targ.scrollIntoView(false);
-        }
+        setTimeout( function(self) {
+          var targ = null, node = self.getHtmlNode();
+          if (!node) return;
+          
+          try {
+            if (!sHash)
+              targ = node.querySelector('li[data-idx]');
+            else targ = node.querySelector('li[data-idx="' + sHash + '"]');
+          } catch(e) { }
+          if (targ) {
+            gotoPage(self,node,targ,sAnchor);
+            if (firstGoto) targ.scrollIntoView(false);
+          }
+        },0,this);  // let utils.setChildren(this,bChild) run first
       },['',0]);
       window.onhashchange = getHashChangeFn(this);
       
@@ -405,7 +402,6 @@ function goTopId__(value,oldValue) {
   if (value <= 2) {
     if (value == 1) {
       this.defineDual('data-src', function(value,oldValue) {
-        // this.state['data-src'] = value;  // must be auto assigned
         if (value) {
           var imgComp = this.componentOf('img');
           if (imgComp && imgComp.isHooked)
